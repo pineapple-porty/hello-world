@@ -1,0 +1,4 @@
+/storage/*.sqlite
+/storage/*.db
+.env
+.DS_Store
