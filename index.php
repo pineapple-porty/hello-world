@@ -11,7 +11,7 @@ if ($q !== '') {
     $pages = $stmt->fetchAll();
 } else {
     $stmt = $pdo->prepare("SELECT * FROM pages WHERE (:category = '' OR category = :category) ORDER BY updated_at DESC LIMIT 40");
-    $stmt->execute([':category' => $category]);
+    $stmt->execute([':category_filter' => $category, ':category_value' => $category]);
     $pages = $stmt->fetchAll();
 }
 
