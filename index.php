@@ -6,8 +6,8 @@ $category = trim((string) ($_GET['category'] ?? ''));
 $pdo = db();
 
 if ($q !== '') {
-    $stmt = $pdo->prepare("SELECT * FROM pages WHERE (title LIKE :query OR summary LIKE :query OR content LIKE :query) AND (:category = '' OR category = :category) ORDER BY CASE WHEN title LIKE :title_query THEN 0 ELSE 1 END, updated_at DESC LIMIT 40");
-    $stmt->execute([':query' => '%' . $q . '%', ':title_query' => $q . '%', ':category' => $category]);
+    $stmt = $pdo->prepare("SELECT * FROM pages WHERE (title LIKE :query OR summary LIKE :query OR content LIKE :query) AND (:category_filter = '' OR category = :category_value) ORDER BY CASE WHEN title LIKE :title_query THEN 0 ELSE 1 END, updated_at DESC LIMIT 40");
+    $stmt->execute([':query' => '%' . $q . '%', ':title_query' => $q . '%', ':category_filter' => $category, ':category_value' => $category]);
     $pages = $stmt->fetchAll();
 } else {
     $stmt = $pdo->prepare("SELECT * FROM pages WHERE (:category = '' OR category = :category) ORDER BY updated_at DESC LIMIT 40");
