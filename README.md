@@ -10,7 +10,7 @@ Atlas is a production-minded PHP wiki foundation: a fast, calm reference site wh
 - PostgreSQL or MySQL through DATABASE_URL / DB_DSN, with SQLite as a zero-config fallback
 - Automatic schema initialization and seed content on first request
 - JSON health endpoint at /health.php
-- GitHub Actions PHP syntax checks
+- A portable check.sh syntax-check script for PHP-enabled environments
 
 ## Run locally
 
